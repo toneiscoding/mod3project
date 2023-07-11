@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './CreatePage.css'
+import './index.css'
 import axios from 'axios'
 
 const CreatePage = () => {
@@ -31,7 +31,7 @@ const CreatePage = () => {
       method:"POST",
       url: "/entries",
       data: {
-        name,
+        author: name,
         title,
         content
       }

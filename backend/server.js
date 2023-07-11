@@ -17,13 +17,12 @@ mongoose.connection.once('open', ()=> {
 
 const Entry = require('./models/Entries')
 
-
 const app = express();
 app.use(express.json());
 
 //create- create entry
 app.post('/entries', async (req, res) =>{
-    console.log("create route");
+    console.log("creating entries");
     let databaseResponse = await Entry.create(req.body);
     res.send(databaseResponse)
 })
@@ -35,10 +34,10 @@ app.get('/entries', async (req, res) =>{
     res.send(response)
 })
 //update
-app.put('/entries/:id/:newEntry', async (req, res) =>{
+app.put('/entries/:id/', async (req, res) =>{
     const id = req.params.id;
-    const newEntry= req.params.newEntry;
-    let databaseResponse = await Entry.findByIdAndUpdate(id, {title: newEntry})
+    const newContent= req.body;
+    let databaseResponse = await Entry.findByIdAndUpdate(id, newContent)
     res.send(databaseResponse)
     console.log("this has been updated")
 })
