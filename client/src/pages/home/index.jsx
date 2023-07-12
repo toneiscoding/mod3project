@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './index.css'
+import EditEntry from '../editEntry'
 
 
 const Home = () => {   
@@ -50,6 +51,10 @@ const Home = () => {
                     {entry.content}
                 </div>
                 <button onClick={ ()=>handleClick(entry._id)}>delete</button>
+                
+                {/* add this or no */}
+                <button onClick={() => history.push(`/entries/${entry._id}/edit`)}>Edit</button>
+
             </div>
         )
     })
@@ -59,6 +64,7 @@ const Home = () => {
         homepage
         </h1>
         {entriesJSX}
+        {EditEntry}
     </div>
  
     
