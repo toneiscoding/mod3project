@@ -1,7 +1,8 @@
-
+const cors =require("cors")
 const express = require('express');
 const dotenv = require('dotenv');
 dotenv.config(); 
+require('./config/database.js')
 // lets us do process.env (get variables from .env file)
 
 //connect mongoDB
@@ -19,6 +20,7 @@ const Entry = require('./models/Entries')
 
 const app = express();
 app.use(express.json());
+app.use(cors())
 
 //create- create entry
 app.post('/entries', async (req, res) =>{
