@@ -1,6 +1,7 @@
-const cors =require("cors")
+
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require("cors")
 dotenv.config(); 
 require('./config/database.js')
 // lets us do process.env (get variables from .env file)
