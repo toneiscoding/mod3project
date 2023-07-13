@@ -1,34 +1,34 @@
 import React, { useState } from 'react'
 import './index.css'
 import axios from 'axios'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CreatePage = () => {
-  //state
-  //handlesubmit function
-  //handleChange functions
-  const [name, setName]= useState("")
+  const [name, setName] = useState("")
   const [title, setTitle] = useState("")
-  const [content, setContent]= useState("")
+  const [content, setContent] = useState("")
+  const [submitted, setSubmitted] = useState(false)
 
   const handleNameChange = (e) => {
-    //get the value of what the user is typing
-      let newValue= e.target.value
-      setName(newValue)
-    //set state to this value
-  
+    let newValue = e.target.value
+    setName(newValue)
   }
+
   const handleTitleChange = (e) => {
-    let newValue= e.target.value
+    let newValue = e.target.value
     setTitle(newValue)
   }
+
   const handleContentChange = (e) => {
-    let newValue= e.target.value
+    let newValue = e.target.value
     setContent(newValue)
   }
+
   const handleSubmit = (e) => {
     e.preventDefault()
+
     axios({
-      method:"POST",
+      method: "POST",
       url: "/entries",
       data: {
         author: name,
@@ -38,33 +38,65 @@ const CreatePage = () => {
     })
     console.log(name, title, content, "chase is the man")
     console.log('function is submitting')
-  }
-  return (
-   
-    //form with a name input, content text area and submit button
-    <form onSubmit={handleSubmit} className="entry-inputs">
-    <h2>Journal Post</h2>
-      <div>
-        <label >
-          Name
-        </label>
-        <input value={name} onChange={handleNameChange}/>
-      </div>
-      <div>
-        <label>
-          Title
-        </label>
-        <input value={title} onChange={handleTitleChange}/>
-      </div>
-      <div>
-        <label>
-          Content
-        </label>
-        <textarea value={content} onChange={handleContentChange}/>
-      </div>
-      <button>submit</button>
-    </form>
-  )
-}
 
-export default CreatePage
+    setName("") // Clearing the input values
+    setTitle("")
+    setContent("")
+    setSubmitted(true) // Setting submitted state to true
+  }
+
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6 offset-md-3">
+          {submitted ? (
+            <div className="alert alert-success mt-4">
+              Thank you for your entry! Please go to the home page to see your post. 😊
+            </div>
+          ) : null}
+          <form onSubmit={handleSubmit}>
+            <h2 className="mb-4">Journal Post</h2>
+            <div className="mb-3">
+              <label htmlFor="name" className="form-label">
+                Author
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="name"
+                value={name}
+                onChange={handleNameChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="title" className="form-label">
+                Title
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="title"
+                value={title}
+                onChange={handleTitleChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="content" className="form-label">
+                Content
+              </label>
+              <textarea
+                className="form-control"
+                id="content"
+                value={content}
+                onChange={handleContentChange}
+              ></textarea>
+            </div>
+            <button type="submit" className="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CreatePage;

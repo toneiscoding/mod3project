@@ -2,5 +2,38 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: row;
+
 
 }
+  
+  .link {
+    /* Your existing styles */
+    transition: opacity 0.3s ease-in-out;
+    
+  }
+  
+  .link:hover {
+    opacity: 0.5;
+  }
+  
+  .active {
+    /* Your existing styles */
+    opacity: 1;
+  }
+  
+  .logo {
+    /* Your existing styles */
+    /* Add animation styles here, e.g., animation: fade-in 0.5s ease-in-out; */
+    animation: fade-in 1.0s ease-in-out
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 5;
+    }
+  }
+  

@@ -6,6 +6,7 @@ import Navbar from './components/navbar'
 import {BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/home'
 import About from './pages/about'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
  
