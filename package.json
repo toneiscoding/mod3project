@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "development": "concurrently \"cd backend && nodemon server.js\" \"cd client && npm run dev\"",
+    "development": "concurrently \"cd backend && node server.js\" \"cd client && npm run dev\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "react-scripts start",
     "build": "react-scripts build",

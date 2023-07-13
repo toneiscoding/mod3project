@@ -1,7 +1,6 @@
-import { useState } from 'react'
+
 import './App.css'
 import  CreatePage from './pages/createPage'
-import axios  from 'axios'
 import Navbar from './components/navbar'
 import {BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/home'
